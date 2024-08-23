@@ -13,5 +13,5 @@ st.set_page_config(
 # Set the title that appears at the top of the page.
 st.image('images/el-chalten.jpg','El Chalten, Patagonia')
 
-<iframe src="https://rainfall-prediction-app-volkan-ai.streamlit.app/?embed=true"
-  style="height: 450px; width: 100%;"></iframe>
+# <iframe src="https://rainfall-prediction-app-volkan-ai.streamlit.app/?embed=true"
+#   style="height: 450px; width: 100%;"></iframe>
