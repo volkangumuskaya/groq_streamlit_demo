@@ -1,3 +1,10 @@
 import streamlit.components.v1 as components
+import streamlit as st
 
-components.iframe("https://rainfall-prediction-app-volkan-ai.streamlit.app?embed=True/")
+st.html(
+    "<iframe
+  src="https://30days.streamlit.app?embed=true"
+  style="height: 450px; width: 100%;"
+></iframe>"
+)
+
