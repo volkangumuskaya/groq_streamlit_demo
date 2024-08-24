@@ -16,9 +16,11 @@ def icon(emoji: str):
 
 # icon(":volcano:")
 
-# colx1,colx2,colx3 = st.columns(3)
-# with colx2:
-#     st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=400)
+colx1,colx2,colx3 = st.columns(3)
+with colx2:
+    st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=400)
+with st.sidebar:
+    st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 
@@ -44,17 +46,6 @@ headers = {
 response = requests.get(url, headers=headers)
 
 # Define model details
-# models = {
-#     "gemma-7b-it": {"name": "Gemma-7b-it", "tokens": 8192, "developer": "Google"},
-#     #  "llama2-70b-4096": {"name": "LLaMA2-70b-chat", "tokens": 4096, "developer": "Meta"},
-#     # "llama3-70b-8192": {"name": "LLaMA3-70b-8192", "tokens": 8192, "developer": "Meta"},
-#     # "llama3-8b-8192": {"name": "LLaMA3-8b-8192", "tokens": 8192, "developer": "Meta"},
-#     "mixtral-8x7b-32768": {"name": "Mixtral-8x7b-Instruct-v0.1", "tokens": 32768, "developer": "Mistral"},
-# }
-# models={}
-# for x in response.json()['data']:
-#     models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
-
 models={}
 for x in response.json()['data']:
     try:
