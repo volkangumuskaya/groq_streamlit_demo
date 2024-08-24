@@ -1,10 +1,10 @@
 import streamlit as st
 from typing import Generator
 from groq import Groq
-
+import requests
+GROQ_API_KEY=st.secrets["GROQ_API_KEY"]
 st.set_page_config(page_icon=":volcano:", layout="wide",
                    page_title="volkan-ai-chatbot")
-
 
 def icon(emoji: str):
     """Shows an emoji as a Notion-style page icon."""
@@ -16,22 +16,10 @@ def icon(emoji: str):
 
 icon(":volcano:")
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
-# import os
-# string='echo "${{ secrets.GROQ_KEY }} >> $GITHUB_ENV"'
-# st.subheader(string)
-# os.system(echo_statement)
-# GROQ_API_KEY=os.environ['GROQ_KEY']
-
-
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
-
-# # Get the secret value from the environment variable
-# client = Groq(
-#     api_key=GROQ_API_KEY,
-# )
 
 # Initialize chat history and selected model
 if "messages" not in st.session_state:
@@ -39,6 +27,43 @@ if "messages" not in st.session_state:
 
 if "selected_model" not in st.session_state:
     st.session_state.selected_model = None
+
+#find the models supported
+###########################
+url = "https://api.groq.com/openai/v1/models"
+headers = {
+    "Authorization": f"Bearer {GROQ_API_KEY}",
+    "Content-Type": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+for x in response.json()['data']:
+    try:
+        all_groq_supported_models.append(x['id'])
+    except:
+        all_groq_supported_models=[]
+
+client = Groq(
+    api_key=GROQ_API_KEY
+)
+
+chat_completion_supported_models = []
+for model_name in all_groq_supported_models:
+    try:
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": "Hey",
+                }
+            ],
+            model=model_name,
+        )
+        print(model_name, 'OK')
+        chat_completion_supported_models.append(model_name)
+    except:
+        print(model_name, 'not supported')
+##########################
 
 # Define model details
 models = {
