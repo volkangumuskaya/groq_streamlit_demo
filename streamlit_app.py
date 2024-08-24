@@ -15,16 +15,16 @@ def icon(emoji: str):
 
 
 icon(":volcano:")
-
+import os
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
-# st.subheader(os.environ['GROQ_KEY'])
+st.subheader(os.environ['GROQ_KEY'])
 st.subheader(os.getenv('GROQ_KEY'))
 st.subheader(os.getenv(GROQ_KEY))
 # client = Groq(
 #     api_key=st.secrets["GROQ_API_KEY"],
 # )
 
-import os
+
 # Get the secret value from the environment variable
 secret_value = os.environ['GROQ_KEY']
 client = Groq(
