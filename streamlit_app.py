@@ -12,13 +12,13 @@ def icon(emoji: str):
         f'<span style="font-size: 78px; line-height: 1">{emoji}</span>',
         unsafe_allow_html=True,
     )
-st.write('try1')
-st.write('try2')
+
 
 icon(":volcano:")
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
-
+st.subheader('try1')
+st.subheader('try2')
 # client = Groq(
 #     api_key=st.secrets["GROQ_API_KEY"],
 # )
