@@ -62,7 +62,6 @@ for x in response.json()['data']:
             ],
             model=x['id'],
         )
-        chat_completion_supported_models.append(model_name)
         models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
     except:
         print(x['id'], 'not supported')
