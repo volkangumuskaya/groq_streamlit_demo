@@ -46,26 +46,26 @@ response = requests.get(url, headers=headers)
 #     # "llama3-8b-8192": {"name": "LLaMA3-8b-8192", "tokens": 8192, "developer": "Meta"},
 #     "mixtral-8x7b-32768": {"name": "Mixtral-8x7b-Instruct-v0.1", "tokens": 32768, "developer": "Mistral"},
 # }
-models={}
-for x in response.json()['data']:
-    models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
-
 # models={}
 # for x in response.json()['data']:
-#     try:
-#         chat_completion = client.chat.completions.create(
-#             messages=[
-#                 {
-#                     "role": "user",
-#                     "content": "Hey",
-#                 }
-#             ],
-#             model=x['id'],
-#         )
-#         chat_completion_supported_models.append(model_name)
-#         models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
-#     except:
-#         print(x['id'], 'not supported')
+#     models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
+
+models={}
+for x in response.json()['data']:
+    try:
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": "Hey",
+                }
+            ],
+            model=x['id'],
+        )
+        chat_completion_supported_models.append(model_name)
+        models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
+    except:
+        # print(x['id'], 'not supported')
 
 # Layout for model selection and max_tokens slider
 col1, col2 = st.columns(2)
