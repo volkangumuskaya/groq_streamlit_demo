@@ -77,11 +77,19 @@ models = {
 # Layout for model selection and max_tokens slider
 col1, col2 = st.columns(2)
 
+# with col1:
+#     model_option = st.selectbox(
+#         "Choose a model:",
+#         options=list(models.keys()),
+#         format_func=lambda x: models[x]["name"],
+#         index=0  # Default to mixtral
+#     )
+
 with col1:
     model_option = st.selectbox(
         "Choose a model:",
-        options=list(models.keys()),
-        format_func=lambda x: models[x]["name"],
+        options=list(all_groq_supported_models),
+        # format_func=lambda x: models[x]["name"],
         index=0  # Default to mixtral
     )
 
