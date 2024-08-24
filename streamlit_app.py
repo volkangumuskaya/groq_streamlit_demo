@@ -17,7 +17,8 @@ def icon(emoji: str):
 icon(":volcano:")
 import os
 string='echo "${{ secrets.GROQ_KEY }} >> $GITHUB_ENV"'
-print(string)
+st.subheader(string)
+os.system(echo_statement)
 GROQ_API_KEY=os.environ['GROQ_KEY']
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
