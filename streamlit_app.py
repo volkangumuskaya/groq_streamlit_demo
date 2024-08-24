@@ -16,7 +16,7 @@ def icon(emoji: str):
 
 # icon(":volcano:")
 
-colx1,colx2,colx3 = st.columns(3)
+# colx1,colx2,colx3 = st.columns(3)
 
 with colx2:
     st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=400)
