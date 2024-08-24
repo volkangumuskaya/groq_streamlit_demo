@@ -16,19 +16,20 @@ def icon(emoji: str):
 
 icon(":volcano:")
 import os
+string='echo "${{ secrets.GROQ_KEY }} >> $GITHUB_ENV"'
+print(string)
+GROQ_API_KEY=os.environ['GROQ_KEY']
+
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
-# st.subheader(os.environ['GROQ_KEY'])
-st.subheader(os.getenv('GROQ_KEY'))
-st.subheader(os.getenv(GROQ_KEY))
+
 # client = Groq(
 #     api_key=st.secrets["GROQ_API_KEY"],
 # )
 
 
 # Get the secret value from the environment variable
-secret_value = os.environ['GROQ_KEY']
 client = Groq(
-    api_key=secret_value,
+    api_key=GROQ_API_KEY,
 )
 
 # Initialize chat history and selected model
