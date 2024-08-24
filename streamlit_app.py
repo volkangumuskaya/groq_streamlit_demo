@@ -17,8 +17,9 @@ def icon(emoji: str):
 icon(":volcano:")
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
-st.subheader('try1')
-st.subheader('try2')
+st.subheader(os.environ['GROQ_KEY'])
+st.subheader(os.getenv('GROQ_KEY'))
+st.subheader(os.getenv(GROQ_KEY))
 # client = Groq(
 #     api_key=st.secrets["GROQ_API_KEY"],
 # )
