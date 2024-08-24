@@ -16,7 +16,10 @@ def icon(emoji: str):
 
 # icon(":volcano:")
 
-st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=1000)
+colx1, colx2,colx3 = st.columns(3)
+
+with colx2:
+    st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=600)
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 
