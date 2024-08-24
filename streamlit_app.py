@@ -12,7 +12,8 @@ def icon(emoji: str):
         f'<span style="font-size: 78px; line-height: 1">{emoji}</span>',
         unsafe_allow_html=True,
     )
-
+st.write('try1')
+st.write('try2')
 
 icon(":volcano:")
 
