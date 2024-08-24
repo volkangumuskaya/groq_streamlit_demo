@@ -70,7 +70,7 @@ with col1:
         "Choose a model:",
         options=list(models.keys()),
         format_func=lambda x: models[x]["name"],
-        index=0  # Default to mixtral
+        index=5  # Default to mixtral
     )
 
 # with col1:
