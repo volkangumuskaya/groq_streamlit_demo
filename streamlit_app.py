@@ -14,7 +14,10 @@ def icon(emoji: str):
     )
 
 
-icon(":volcano:")
+# icon(":volcano:")
+
+st.image('images/el-chalten.jpg','El Chalten, Patagonia')
+
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 
 client = Groq(
