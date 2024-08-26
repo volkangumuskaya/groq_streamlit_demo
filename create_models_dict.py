@@ -3,7 +3,7 @@ from groq import Groq
 import requests
 print('getting key')
 GROQ_API_KEY=os.environ['groq_env_key']
-print(GROQ_API_KEY[0:5])
+
 
 client = Groq(
     api_key=GROQ_API_KEY,
