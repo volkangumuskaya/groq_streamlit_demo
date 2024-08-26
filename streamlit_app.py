@@ -18,8 +18,29 @@ def icon(emoji: str):
 # colx1,colx2,colx3 = st.columns(3)
 # with colx2:
 #     st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=400)
+# with st.sidebar:
+#     st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
+import base64
+def img_to_base64(image_path):
+    """Convert image to base64."""
+    try:
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
+    except Exception as e:
+        logging.error(f"Error converting image to base64: {str(e)}")
+        return None
+
+# Load and display sidebar image
+img_path = "images/logo3_transparent.png"
+img_base64 = img_to_base64(img_path)
+if img_base64:
+    st.sidebar.markdown(
+        f'<img src="data:images/png;base64,{img_base64}" class="cover-glow">',
+        unsafe_allow_html=True,
+    )
+st.sidebar.header("About",divider='orange')
 with st.sidebar:
-    st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
+    st.image('images/profile_round.png',width=200,caption="https://www.linkedin.com/in/volkangumuskaya/")
 
 st.subheader("Chatbot", divider="rainbow", anchor=False)
 st.write("This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
