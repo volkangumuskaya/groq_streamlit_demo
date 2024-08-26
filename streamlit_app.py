@@ -24,15 +24,8 @@ with st.sidebar:
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 '''
 This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'.
+ Thanks to Tony Kipkemboi, https://thedataengineerblog.com/[^1]
 '''
-
-st.markdown("""
-<style>
-.thanks-font {
-    font-size:14px !important;
-}
-</style>
-""", unsafe_allow_html=True)
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
@@ -168,13 +161,3 @@ if prompt := st.chat_input("Enter your prompt here..."):
         st.session_state.messages.append(
             {"role": "assistant", "content": combined_response})
 
-styl = f"""
-<style>
-    .stTextInput {{
-      position: fixed;
-      bottom: 3rem;
-    }}
-</style>
-"""
-# st.markdown(styl, unsafe_allow_html=True)
-st.markdown('<p class="styl">Credits to Tony Kipkemboi, https://thedataengineerblog.com/</p>', unsafe_allow_html=True)
