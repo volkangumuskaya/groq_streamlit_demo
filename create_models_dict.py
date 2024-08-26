@@ -1,4 +1,4 @@
-
+import os
 from groq import Groq
 import requests
 print('getting key')
