@@ -24,8 +24,6 @@ with st.sidebar:
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 '''
 This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'.
-
-
 '''
 
 st.markdown("""
