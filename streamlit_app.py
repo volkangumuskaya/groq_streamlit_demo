@@ -34,8 +34,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="thanks-font">Credits to [Tony Kipkemboi] (https://thedataengineerblog.com/)</p>', unsafe_allow_html=True)
-
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
@@ -169,3 +167,5 @@ if prompt := st.chat_input("Enter your prompt here..."):
         combined_response = "\n".join(str(item) for item in full_response)
         st.session_state.messages.append(
             {"role": "assistant", "content": combined_response})
+
+st.markdown('<p class="thanks-font">Credits to [Tony Kipkemboi] (https://thedataengineerblog.com/)</p>', unsafe_allow_html=True)
