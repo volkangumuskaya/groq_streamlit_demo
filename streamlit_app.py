@@ -13,7 +13,6 @@ def icon(emoji: str):
         unsafe_allow_html=True,
     )
 
-
 # icon(":volcano:")
 
 colx1,colx2,colx3 = st.columns(3)
@@ -28,6 +27,16 @@ This is a chatbot application using [Groq](https://groq.com/). Choose one of the
 
 Thanks to [Tony Kipkemboi] (https://thedataengineerblog.com/)
 '''
+st.markdown("""
+<style>
+.small-font {
+    font-size:8px !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown('<p class="small-font">Hello World !!</p>', unsafe_allow_html=True)
+
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
