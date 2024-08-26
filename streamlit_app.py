@@ -23,8 +23,9 @@ with st.sidebar:
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 st.write("This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
-st.markdown("hey[^1]",unsafe_allow_html=True)
 
+st.write("Thanks to Tony Kipkemboi",unsafe_allow_html=True)
+st.divider()
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
