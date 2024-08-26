@@ -45,23 +45,28 @@ headers = {
 
 response = requests.get(url, headers=headers)
 
-# Define model details once
+# # Define model details once
+# if 'models' not in globals():
+#   models={}
+#   for x in response.json()['data']:
+#       try:
+#           chat_completion = client.chat.completions.create(
+#               messages=[
+#                   {
+#                       "role": "user",
+#                       "content": "Hey",
+#                   }
+#               ],
+#               model=x['id'],
+#           )
+#           models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
+#       except:
+#           print(x['id'], 'not supported')
+
+import pickle
 if 'models' not in globals():
-  models={}
-  for x in response.json()['data']:
-      try:
-          chat_completion = client.chat.completions.create(
-              messages=[
-                  {
-                      "role": "user",
-                      "content": "Hey",
-                  }
-              ],
-              model=x['id'],
-          )
-          models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
-      except:
-          print(x['id'], 'not supported')
+    with open('models_dict.pickle', 'rb') as handle:
+      b = pickle.load(handle)
 
 # Layout for model selection and max_tokens slider
 col1, col2 = st.columns(2)
