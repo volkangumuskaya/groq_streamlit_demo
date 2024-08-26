@@ -28,7 +28,7 @@ st.html(
     '''
     <style>
     hr {
-        border-color: rainbow;
+        border-color: blue;
     }
     </style>
     '''
