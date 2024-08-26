@@ -30,13 +30,13 @@ Thanks to [Tony Kipkemboi] (https://thedataengineerblog.com/)
 
 st.markdown("""
 <style>
-.big-font {
-    font-size:300px !important;
+.thanks-font {
+    font-size:10px !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="big-font">Hello World !!</p>', unsafe_allow_html=True)
+st.markdown('<p class="thanks-font">Hello World !!</p>', unsafe_allow_html=True)
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
