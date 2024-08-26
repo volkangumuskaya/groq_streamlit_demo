@@ -168,6 +168,13 @@ if prompt := st.chat_input("Enter your prompt here..."):
         st.session_state.messages.append(
             {"role": "assistant", "content": combined_response})
 
-'''
-'''
+styl = f"""
+<style>
+    .stTextInput {{
+      position: fixed;
+      bottom: 3rem;
+    }}
+</style>
+"""
+st.markdown(styl, unsafe_allow_html=True)
 st.markdown('<p class="thanks-font">Credits to [Tony Kipkemboi] (https://thedataengineerblog.com/)</p>', unsafe_allow_html=True)
