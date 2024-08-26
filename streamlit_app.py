@@ -24,18 +24,7 @@ with st.sidebar:
 st.subheader("Chatbot", divider="rainbow", anchor=False)
 st.write("This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
 st.caption("Credits to Tony Kipkemboi, `https://github.com/tonykipkemboi` ")
-st.markdown('''
-<style>
-.line {
-    border: 1px solid;
-    border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 30;
-    height: 2px;
-    width: 100%;
-    margin-bottom: 16px; /* Adjust this value to change the vertical position */
-}
-</style>
-<div class="line"></div>
-''', unsafe=True)
+
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
