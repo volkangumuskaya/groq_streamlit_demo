@@ -22,7 +22,7 @@ with st.sidebar:
     st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
-st.text("This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
+st.write("This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
 
 
 client = Groq(
