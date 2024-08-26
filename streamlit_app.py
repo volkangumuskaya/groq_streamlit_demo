@@ -23,6 +23,11 @@ with st.sidebar:
     st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
 
 st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
+'''
+This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'.
+
+Thanks to [Tony Kipkemboi] (https://thedataengineerblog.com/)
+'''
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
