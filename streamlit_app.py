@@ -66,7 +66,7 @@ response = requests.get(url, headers=headers)
 import pickle
 if 'models' not in globals():
     with open('models_dict.pickle', 'rb') as handle:
-      b = pickle.load(handle)
+      models = pickle.load(handle)
 
 # Layout for model selection and max_tokens slider
 col1, col2 = st.columns(2)
