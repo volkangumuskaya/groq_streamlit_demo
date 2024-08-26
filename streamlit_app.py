@@ -92,7 +92,7 @@ if st.session_state.selected_model != model_option:
     st.session_state.messages = []
     st.session_state.selected_model = model_option
 
-max_tokens_range = models[model_option]["tokens"]
+max_tokens_range = max(models[model_option]["tokens"],8000)
 
 with col2:
     # Adjust max_tokens slider dynamically based on the selected model
@@ -101,7 +101,7 @@ with col2:
         min_value=512,  # Minimum value to allow some flexibility
         max_value=max_tokens_range,
         # Default value or max allowed if less
-        value=min(512, 8000),
+        value=min(1024),
         step=512,
         help=f"Adjust the maximum number of tokens (words) for the model's response. Max for selected model: {max_tokens_range}"
     )
