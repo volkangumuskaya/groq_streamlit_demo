@@ -25,18 +25,18 @@ st.subheader("Groq Chat Streamlit App", divider="rainbow", anchor=False)
 '''
 This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'.
 
-Thanks to [Tony Kipkemboi] (https://thedataengineerblog.com/)
+
 '''
 
 st.markdown("""
 <style>
 .thanks-font {
-    font-size:10px !important;
+    font-size:14px !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="thanks-font">Hello World !!</p>', unsafe_allow_html=True)
+st.markdown('<p class="thanks-font">Credits to [Tony Kipkemboi] (https://thedataengineerblog.com/)</p>', unsafe_allow_html=True)
 
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
