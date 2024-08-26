@@ -101,7 +101,7 @@ with col2:
         min_value=512,  # Minimum value to allow some flexibility
         max_value=max_tokens_range,
         # Default value or max allowed if less
-        value=min(1024),
+        value=max(1024,max_tokens_range),
         step=512,
         help=f"Adjust the maximum number of tokens (words) for the model's response. Max for selected model: {max_tokens_range}"
     )
