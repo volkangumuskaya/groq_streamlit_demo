@@ -2,7 +2,7 @@ name: Create models list
 run-name: ${{ github.actor }} is testing getting models list working on groq
 on: workflow_dispatch
 env:
-  groq_env_key: ${{ secrets.GROQ_API_KEY }}
+  groq_env_key: ${{ secrets.GROQ_KEY }}
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
