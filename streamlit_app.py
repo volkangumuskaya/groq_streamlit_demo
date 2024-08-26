@@ -176,5 +176,5 @@ styl = f"""
     }}
 </style>
 """
-st.markdown(styl, unsafe_allow_html=True)
-st.markdown('<p class="thanks-font">Credits to [Tony Kipkemboi] (https://thedataengineerblog.com/)</p>', unsafe_allow_html=True)
+# st.markdown(styl, unsafe_allow_html=True)
+st.markdown('<p class="styl">Credits to Tony Kipkemboi, https://thedataengineerblog.com/</p>', unsafe_allow_html=True)
