@@ -4,8 +4,9 @@
 
 ![Demo App Screenshot](images/ss_groq.png)
 
-This [Streamlit](https://streamlit.io/) app is a ChatBot using [Groq API](https://groq.com/), where users can select different models to generate response. The listed models are those supported by Groq and updated everyday. Credits to *Tony Kipkemboi* as the app is created by forking his [repo] (https://github.com/tonykipkemboi/groq_streamlit_demo). 
+This [Streamlit](https://streamlit.io/) app is a ChatBot using [Groq API](https://groq.com/), where users can select different models to generate response. The listed models are those supported by Groq and updated everyday. Credits to *Tony Kipkemboi* as the app is created by forking his [repo](https://github.com/tonykipkemboi/groq_streamlit_demo). 
 
+Try it here: https://groq-api-volkan-ai.streamlit.app/
 
 ## Features
 
