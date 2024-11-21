@@ -8,7 +8,8 @@ st.set_page_config(page_icon=":volcano:", layout="wide",
 
 # System prompt (not displayed to the user)
 SYSTEM_PROMPT = f'''You are a specific AI assistant that try to understand what user wants and will invoke a number of modules. 
-If you find a reasonable match, I want you to respond in the format: The module match is: [Module name]. 
+If you find a reasonable match, I want you to respond in the format: The module match is: [Module name]. Otherwise, you will write you do not understand and ask for clarification. 
+You cannot respond with anything else. This is a strict requirement.
 The module names are as follows: 
 1. Initiate a plan
 2. Modify a plan
