@@ -53,6 +53,8 @@ client = Groq(
 # Initialize chat history and selected model
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    st.session_state.messages.append({"role": "user", "content": "You are a specific AI assitant that answers yes or no. You will only respond with Yes, No until user inputs exit"})
+
 
 if "selected_model" not in st.session_state:
     st.session_state.selected_model = None
