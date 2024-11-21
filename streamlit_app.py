@@ -13,13 +13,13 @@ def icon(emoji: str):
         unsafe_allow_html=True,
     )
 
-# icon(":volcano:")
+icon(":volcano:")
 
-# colx1,colx2,colx3 = st.columns(3)
-# with colx2:
-#     st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=400)
-# with st.sidebar:
-#     st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
+colx1,colx2,colx3 = st.columns(3)
+with colx2:
+    st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=400)
+with st.sidebar:
+    st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
 import base64
 def img_to_base64(image_path):
     """Convert image to base64."""
@@ -67,23 +67,23 @@ headers = {
 
 response = requests.get(url, headers=headers)
 
-# # Define model details once
-# if 'models' not in globals():
-#   models={}
-#   for x in response.json()['data']:
-#       try:
-#           chat_completion = client.chat.completions.create(
-#               messages=[
-#                   {
-#                       "role": "user",
-#                       "content": "Hey",
-#                   }
-#               ],
-#               model=x['id'],
-#           )
-#           models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
-#       except:
-#           print(x['id'], 'not supported')
+# Define model details once
+if 'models' not in globals():
+  models={}
+  for x in response.json()['data']:
+      try:
+          chat_completion = client.chat.completions.create(
+              messages=[
+                  {
+                      "role": "user",
+                      "content": "Hey",
+                  }
+              ],
+              model=x['id'],
+          )
+          models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
+      except:
+          print(x['id'], 'not supported')
 
 import pickle
 if 'models' not in globals():
@@ -93,21 +93,21 @@ if 'models' not in globals():
 # Layout for model selection and max_tokens slider
 col1, col2 = st.columns(2)
 
-# with col1:
-#     model_option = st.selectbox(
-#         "Choose a model:",
-#         options=list(models.keys()),
-#         format_func=lambda x: models[x]["name"],
-#         index=5  # Default to mixtral
-#     )
-
 with col1:
     model_option = st.selectbox(
         "Choose a model:",
-        options=list(all_groq_supported_models),
-        # format_func=lambda x: models[x]["name"],
-        index=0  # Default to mixtral
+        options=list(models.keys()),
+        format_func=lambda x: models[x]["name"],
+        index=5  # Default to mixtral
     )
+
+# with col1:
+#     model_option = st.selectbox(
+#         "Choose a model:",
+#         options=list(all_groq_supported_models),
+#         # format_func=lambda x: models[x]["name"],
+#         index=0  # Default to mixtral
+#     )
 
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
