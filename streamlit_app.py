@@ -43,7 +43,7 @@ with st.sidebar:
     st.image('images/profile_round.png',width=200,caption="https://www.linkedin.com/in/volkangumuskaya/")
 
 st.subheader("Chatbot", divider="rainbow", anchor=False)
-st.write("This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
+st.write("This is a chatbot application using the package [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
 st.caption("Credits to Tony Kipkemboi, `https://github.com/tonykipkemboi` ")
 
 client = Groq(
@@ -93,21 +93,21 @@ if 'models' not in globals():
 # Layout for model selection and max_tokens slider
 col1, col2 = st.columns(2)
 
-with col1:
-    model_option = st.selectbox(
-        "Choose a model:",
-        options=list(models.keys()),
-        format_func=lambda x: models[x]["name"],
-        index=5  # Default to mixtral
-    )
-
 # with col1:
 #     model_option = st.selectbox(
 #         "Choose a model:",
-#         options=list(all_groq_supported_models),
-#         # format_func=lambda x: models[x]["name"],
-#         index=0  # Default to mixtral
+#         options=list(models.keys()),
+#         format_func=lambda x: models[x]["name"],
+#         index=5  # Default to mixtral
 #     )
+
+with col1:
+    model_option = st.selectbox(
+        "Choose a model:",
+        options=list(all_groq_supported_models),
+        # format_func=lambda x: models[x]["name"],
+        index=0  # Default to mixtral
+    )
 
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
