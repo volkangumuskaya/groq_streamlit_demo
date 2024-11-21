@@ -97,16 +97,16 @@ if 'models' not in globals():
     with open('models_dict.pickle', 'rb') as handle:
       models = pickle.load(handle)
 
-# Layout for model selection and max_tokens slider
-col1, col2 = st.columns(2)
-
-with col1:
-    model_option = st.selectbox(
-        "Choose a model:",
-        options=list(models.keys()),
-        format_func=lambda x: models[x]["name"],
-        index=5  # Default to mixtral
-    )
+# # Layout for model selection and max_tokens slider
+# col1, col2 = st.columns(2)
+# with col1:
+#     model_option = st.selectbox(
+#         "Choose a model:",
+#         options=list(models.keys()),
+#         format_func=lambda x: models[x]["name"],
+#         index=5  # Default to mixtral
+#     )
+model_option='llama3-70b-8192'
 
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
