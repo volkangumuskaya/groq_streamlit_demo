@@ -69,24 +69,6 @@ headers = {
 
 response = requests.get(url, headers=headers)
 
-# # Define model details once
-# if 'models' not in globals():
-#   models={}
-#   for x in response.json()['data']:
-#       try:
-#           chat_completion = client.chat.completions.create(
-#               messages=[
-#                   {
-#                       "role": "user",
-#                       "content": "Hey",
-#                   }
-#               ],
-#               model=x['id'],
-#           )
-#           models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
-#       except:
-#           print(x['id'], 'not supported')
-
 import pickle
 if 'models' not in globals():
     with open('models_dict.pickle', 'rb') as handle:
@@ -103,17 +85,10 @@ with col1:
         index=5  # Default to mixtral
     )
 
-# with col1:
-#     model_option = st.selectbox(
-#         "Choose a model:",
-#         options=list(all_groq_supported_models),
-#         # format_func=lambda x: models[x]["name"],
-#         index=0  # Default to mixtral
-#     )
-
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
     st.session_state.messages = []
+    st.session_state.messages.append({"role": "user", "content": "You are a specific AI assitant that answers yes or no. You will only respond with Yes, No until user inputs exit"})
     st.session_state.selected_model = model_option
 
 max_tokens_range = min(models[model_option]["tokens"],8000)
