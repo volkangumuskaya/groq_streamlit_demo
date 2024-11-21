@@ -138,12 +138,8 @@ if prompt := st.chat_input("Enter your prompt here..."):
         chat_completion = client.chat.completions.create(
             model=model_option,
             messages=[
-                {
-                    "role": m["role"],
-                    "content": m["content"]
-                }
-                for m in st.session_state.messages
-            ],
+                {"role": "system", "content": SYSTEM_PROMPT}
+            ] + st.session_state.messages,  # Add system prompt to API context
             max_tokens=max_tokens,
             stream=True
         )
@@ -155,6 +151,15 @@ if prompt := st.chat_input("Enter your prompt here..."):
     except Exception as e:
         st.error(e, icon="🚨")
 
+    # Append the full response to session_state.messages
+    if isinstance(full_response, str):
+        st.session_state.messages.append(
+            {"role": "assistant", "content": full_response})
+    else:
+        # Handle the case where full_response is not a string
+        combined_response = "\n".join(str(item) for item in full_response)
+        st.session_state.messages.append(
+            {"role": "assistant", "content": combined_response})
     # Append the full response to session_state.messages
     if isinstance(full_response, str):
         st.session_state.messages.append(
