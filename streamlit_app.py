@@ -6,6 +6,17 @@ GROQ_API_KEY=st.secrets["GROQ_API_KEY"]
 st.set_page_config(page_icon=":volcano:", layout="wide",
                    page_title="volkan-ai-chatbot")
 
+# System prompt (not displayed to the user)
+SYSTEM_PROMPT = f'''You are a specific AI assistant that try to undderstand what user wants and will invoke a number of modules. 
+If you find a reasonable match, I want you to respond in the format: The module match is: [Module name]. 
+The module names are as follows: 
+1. Intiatiate a plan
+2. Modify a plan
+3. Create a report
+'''
+
+
+
 def icon(emoji: str):
     """Shows an emoji as a Notion-style page icon."""
     st.write(
@@ -55,13 +66,11 @@ if "messages" not in st.session_state:
     st.session_state.messages = []  # Start with an empty chat history
     st.session_state.welcome_message_shown = False
 
-# System prompt (not displayed to the user)
-SYSTEM_PROMPT = "You are a specific AI assistant that answers yes or no. You will only respond with Yes, No until user inputs exit."
 
 # Display the welcome message only once
 if not st.session_state.welcome_message_shown:
     with st.chat_message("assistant", avatar="🤖"):
-        st.markdown("Hi, please prompt me")
+        st.markdown("Hi, please explain what you want to do")
     st.session_state.welcome_message_shown = True
 
 
@@ -160,13 +169,5 @@ if prompt := st.chat_input("Enter your prompt here..."):
         combined_response = "\n".join(str(item) for item in full_response)
         st.session_state.messages.append(
             {"role": "assistant", "content": combined_response})
-    # Append the full response to session_state.messages
-    if isinstance(full_response, str):
-        st.session_state.messages.append(
-            {"role": "assistant", "content": full_response})
-    else:
-        # Handle the case where full_response is not a string
-        combined_response = "\n".join(str(item) for item in full_response)
-        st.session_state.messages.append(
-            {"role": "assistant", "content": combined_response})
+    
 
