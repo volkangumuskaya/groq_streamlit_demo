@@ -106,7 +106,7 @@ col1, col2 = st.columns(2)
 #         format_func=lambda x: models[x]["name"],
 #         index=5  # Default to mixtral
 #     )
-max_tokens_range = min(models[model_option]["tokens"],8000)
+# max_tokens_range = min(models[model_option]["tokens"],8000)
 
 # with col2:
 #     # Adjust max_tokens slider dynamically based on the selected model
