@@ -15,11 +15,11 @@ def icon(emoji: str):
 
 # icon(":volcano:")
 
-colx1,colx2,colx3 = st.columns(3)
-with colx2:
-    st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=400)
-with st.sidebar:
-    st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
+# colx1,colx2,colx3 = st.columns(3)
+# with colx2:
+#     st.image('images/el-chalten.jpg','El Chalten, Patagonia',width=400)
+# with st.sidebar:
+#     st.image('images/profile_round.png',width=170,caption="https://www.linkedin.com/in/volkangumuskaya/")
 import base64
 def img_to_base64(image_path):
     """Convert image to base64."""
@@ -38,12 +38,12 @@ if img_base64:
         f'<img src="data:images/png;base64,{img_base64}" class="cover-glow">',
         unsafe_allow_html=True,
     )
-# st.sidebar.header("About",divider='orange')
-# with st.sidebar:
-#     st.image('images/profile_round.png',width=200,caption="https://www.linkedin.com/in/volkangumuskaya/")
+st.sidebar.header("About",divider='orange')
+with st.sidebar:
+    st.image('images/profile_round.png',width=200,caption="https://www.linkedin.com/in/volkangumuskaya/")
 
 st.subheader("Chatbot", divider="rainbow", anchor=False)
-st.write("This is a chatbot application using the package [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
+st.write("This is a chatbot application using [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
 st.caption("Credits to Tony Kipkemboi, `https://github.com/tonykipkemboi` ")
 
 client = Groq(
@@ -53,7 +53,7 @@ client = Groq(
 # Initialize chat history and selected model
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
+    
 if "selected_model" not in st.session_state:
     st.session_state.selected_model = None
 
@@ -67,23 +67,23 @@ headers = {
 
 response = requests.get(url, headers=headers)
 
-# Define model details once
-if 'models' not in globals():
-  models={}
-  for x in response.json()['data']:
-      try:
-          chat_completion = client.chat.completions.create(
-              messages=[
-                  {
-                      "role": "user",
-                      "content": "Hey",
-                  }
-              ],
-              model=x['id'],
-          )
-          models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
-      except:
-          print(x['id'], 'not supported')
+# # Define model details once
+# if 'models' not in globals():
+#   models={}
+#   for x in response.json()['data']:
+#       try:
+#           chat_completion = client.chat.completions.create(
+#               messages=[
+#                   {
+#                       "role": "user",
+#                       "content": "Hey",
+#                   }
+#               ],
+#               model=x['id'],
+#           )
+#           models[x['id']] = {'name': x['id'], 'tokens': x['context_window'], 'developer': x['owned_by']}
+#       except:
+#           print(x['id'], 'not supported')
 
 import pickle
 if 'models' not in globals():
