@@ -7,10 +7,10 @@ st.set_page_config(page_icon=":volcano:", layout="wide",
                    page_title="volkan-ai-chatbot")
 
 # System prompt (not displayed to the user)
-SYSTEM_PROMPT = f'''You are a specific AI assistant that try to undderstand what user wants and will invoke a number of modules. 
+SYSTEM_PROMPT = f'''You are a specific AI assistant that try to understand what user wants and will invoke a number of modules. 
 If you find a reasonable match, I want you to respond in the format: The module match is: [Module name]. 
 The module names are as follows: 
-1. Intiatiate a plan
+1. Initiate a plan
 2. Modify a plan
 3. Create a report
 '''
@@ -70,7 +70,10 @@ if "messages" not in st.session_state:
 # Display the welcome message only once
 if not st.session_state.welcome_message_shown:
     with st.chat_message("assistant", avatar="🤖"):
-        st.markdown("Hi, please explain what you want to do")
+        st.markdown(f"""Hi, please explain what you want to do. Currently the main modules are:
+        1. Initiate a plan
+        2. Modify a plan
+        3. Create a report""")
     st.session_state.welcome_message_shown = True
 
 
