@@ -9,7 +9,7 @@ st.set_page_config(page_icon=":volcano:", layout="wide",
 
 tmp_names = ['1. Initiate a plan', '2. Modify a plan', '3. Get insights', '4. Get results']
 nl = '\n'
-module_names = f"{nl}{nl.join(names)}"
+module_names = f"{nl}{nl.join(tmp_names)}"
 
 # System prompt (not displayed to the user)
 SYSTEM_PROMPT = f'''You are a specific AI assistant that try to understand what user wants and will invoke a number of modules. 
