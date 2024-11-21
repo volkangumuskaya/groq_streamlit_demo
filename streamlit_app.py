@@ -96,10 +96,16 @@ with col1:
 
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
-    st.session_state.messages = []
-    st.session_state.messages.append({"role": "user", "content": "You are a specific AI assitant that answers yes or no. You will only respond with Yes, No until user inputs exit"})
+    st.session_state.messages = []  # Clear chat history
+    st.session_state.welcome_message_shown = False  # Reset welcome message
     st.session_state.selected_model = model_option
 
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    avatar = '🤖' if message["role"] == "assistant" else '👨‍💻'
+    with st.chat_message(message["role"], avatar=avatar):
+        st.markdown(message["content"])
+      
 max_tokens_range = min(models[model_option]["tokens"],8000)
 
 with col2:
@@ -113,13 +119,6 @@ with col2:
         step=512,
         help=f"Adjust the maximum number of tokens (words) for the model's response. Max for selected model: {max_tokens_range}"
     )
-
-# Display chat messages from history on app rerun
-for message in st.session_state.messages:
-    avatar = '🤖' if message["role"] == "assistant" else '👨‍💻'
-    with st.chat_message(message["role"], avatar=avatar):
-        st.markdown(message["content"])
-
 
 def generate_chat_responses(chat_completion) -> Generator[str, None, None]:
     """Yield chat response content from the Groq API response."""
