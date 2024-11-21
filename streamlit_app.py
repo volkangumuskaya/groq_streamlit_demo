@@ -50,10 +50,19 @@ client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
 
-# Initialize chat history and selected model
+# Initialize chat history and system prompt
 if "messages" not in st.session_state:
-    st.session_state.messages = []
-    st.session_state.messages.append({"role": "user", "content": "You are a specific AI assitant that answers yes or no. You will only respond with Yes, No until user inputs exit"})
+    st.session_state.messages = []  # Start with an empty chat history
+    st.session_state.welcome_message_shown = False
+
+# System prompt (not displayed to the user)
+SYSTEM_PROMPT = "You are a specific AI assistant that answers yes or no. You will only respond with Yes, No until user inputs exit."
+
+# Display the welcome message only once
+if not st.session_state.welcome_message_shown:
+    with st.chat_message("assistant", avatar="🤖"):
+        st.markdown("Hi, please prompt me")
+    st.session_state.welcome_message_shown = True
 
 
 if "selected_model" not in st.session_state:
