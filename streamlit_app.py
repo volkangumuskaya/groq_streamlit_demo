@@ -6,7 +6,7 @@ GROQ_API_KEY=st.secrets["GROQ_API_KEY"]
 st.set_page_config(page_icon=":volcano:", layout="wide",
                    page_title="volkan-ai-chatbot")
 
-module_names=f''''1. Initiate a plan \n 2. Modify a plan \n 3. Get insights \n 4. Get results''''
+module_names=f'''1. Initiate a plan \n 2. Modify a plan \n 3. Get insights \n 4. Get results'''
 
 # System prompt (not displayed to the user)
 SYSTEM_PROMPT = f'''You are a specific AI assistant that try to understand what user wants and will invoke a number of modules. 
