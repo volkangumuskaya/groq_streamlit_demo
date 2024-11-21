@@ -6,14 +6,14 @@ GROQ_API_KEY=st.secrets["GROQ_API_KEY"]
 st.set_page_config(page_icon=":volcano:", layout="wide",
                    page_title="volkan-ai-chatbot")
 
+module_names=f''''1. Initiate a plan \n 2. Modify a plan \n 3. Get insights \n 4. Get results''''
+
 # System prompt (not displayed to the user)
 SYSTEM_PROMPT = f'''You are a specific AI assistant that try to understand what user wants and will invoke a number of modules. 
-If you find a reasonable match, I want you to respond in the format: The module match is: [Module name]. Otherwise, you will write you do not understand and ask for clarification. 
+If you find a reasonable match, I want you to respond in the format: The module match is: [Module name]. 
 You cannot respond with anything else. This is a strict requirement.
-The module names are as follows: 
-1. Initiate a plan
-2. Modify a plan
-3. Create a report
+The module names are as follows: \n
+{module_names}
 '''
 
 
@@ -71,10 +71,8 @@ if "messages" not in st.session_state:
 # Display the welcome message only once
 if not st.session_state.welcome_message_shown:
     with st.chat_message("assistant", avatar="🤖"):
-        st.markdown(f"""Hi, please explain what you want to do. Currently the main modules are:
-        1. Initiate a plan
-        2. Modify a plan
-        3. Create a report""")
+        st.markdown(f"""Hi, please explain what you want to do. Currently the main modules are: \n
+        {module_names}""")
     st.session_state.welcome_message_shown = True
 
 
