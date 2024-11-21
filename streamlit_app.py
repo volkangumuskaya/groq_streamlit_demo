@@ -98,7 +98,7 @@ if 'models' not in globals():
       models = pickle.load(handle)
 
 # # Layout for model selection and max_tokens slider
-# col1, col2 = st.columns(2)
+col1, col2 = st.columns(2)
 # with col1:
 #     model_option = st.selectbox(
 #         "Choose a model:",
@@ -106,7 +106,21 @@ if 'models' not in globals():
 #         format_func=lambda x: models[x]["name"],
 #         index=5  # Default to mixtral
 #     )
+max_tokens_range = min(models[model_option]["tokens"],8000)
+
+# with col2:
+#     # Adjust max_tokens slider dynamically based on the selected model
+#     max_tokens = st.slider(
+#         "Max Tokens:",
+#         min_value=512,  # Minimum value to allow some flexibility
+#         max_value=max_tokens_range,
+#         # Default value or max allowed if less
+#         value=max(1024,max_tokens_range),
+#         step=512,
+#         help=f"Adjust the maximum number of tokens (words) for the model's response. Max for selected model: {max_tokens_range}"
+#     )
 model_option='llama3-70b-8192'
+max_tokens=1024
 
 # Detect model change and clear chat history if model has changed
 if st.session_state.selected_model != model_option:
@@ -120,19 +134,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"], avatar=avatar):
         st.markdown(message["content"])
       
-max_tokens_range = min(models[model_option]["tokens"],8000)
 
-with col2:
-    # Adjust max_tokens slider dynamically based on the selected model
-    max_tokens = st.slider(
-        "Max Tokens:",
-        min_value=512,  # Minimum value to allow some flexibility
-        max_value=max_tokens_range,
-        # Default value or max allowed if less
-        value=max(1024,max_tokens_range),
-        step=512,
-        help=f"Adjust the maximum number of tokens (words) for the model's response. Max for selected model: {max_tokens_range}"
-    )
 
 def generate_chat_responses(chat_completion) -> Generator[str, None, None]:
     """Yield chat response content from the Groq API response."""
