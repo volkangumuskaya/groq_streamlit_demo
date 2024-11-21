@@ -13,7 +13,7 @@ def icon(emoji: str):
         unsafe_allow_html=True,
     )
 
-icon(":volcano:")
+# icon(":volcano:")
 
 colx1,colx2,colx3 = st.columns(3)
 with colx2:
@@ -38,9 +38,9 @@ if img_base64:
         f'<img src="data:images/png;base64,{img_base64}" class="cover-glow">',
         unsafe_allow_html=True,
     )
-st.sidebar.header("About",divider='orange')
-with st.sidebar:
-    st.image('images/profile_round.png',width=200,caption="https://www.linkedin.com/in/volkangumuskaya/")
+# st.sidebar.header("About",divider='orange')
+# with st.sidebar:
+#     st.image('images/profile_round.png',width=200,caption="https://www.linkedin.com/in/volkangumuskaya/")
 
 st.subheader("Chatbot", divider="rainbow", anchor=False)
 st.write("This is a chatbot application using the package [Groq](https://groq.com/). Choose one of the available models, type a prompt and press 'Enter'")
